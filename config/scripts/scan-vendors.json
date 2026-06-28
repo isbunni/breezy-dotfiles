@@ -1,0 +1,57 @@
+{
+  "phones": {
+    "503-371-1648": "AutoZone",
+    "503-315-9834": "AutoZone",
+    "503-256-0025": "NAPA",
+    "503-581-6655": "NAPA",
+    "503-682-1777": "TEC",
+    "503-286-2800": "FMI",
+    "503-304-7555": "SkylineFord",
+    "503-581-2411": "SkylineFord",
+    "971-241-7057": null,
+    "971-335-0352": "SkylineFord",
+    "503-763-1440": "IndustrialSource"
+  },
+  "domains": {
+    "autozonepro.com": "AutoZone",
+    "skylineforddirect.com": "SkylineFord",
+    "capitolsubaru.com": "CapitolSubaru",
+    "fleetpride.com": "FleetPride",
+    "oreillypro.com": "OReilly",
+    "imcparts.com": "IMC",
+    "simplepay.cdk.com": "CDKSimplePay",
+    "fmitrucks.com": "FMI",
+    "AutoAuth.com": "AutoAuth",
+    "industrialsource.com": "IndustrialSource",
+    "www.industrialsource.com": "IndustrialSource",
+    "johnstonesupply.com": "JohnstoneSupply"
+  },
+  "cities": {
+    "wilsonville|97070": "TEC",
+    "keizer|97303": "SkylineFord",
+    "minneapolis|55480": "NAPA",
+    "newberg|97132": "TEC"
+  },
+  "addresses": {
+    "7950 SW Burns Way": "TEC",
+    "2530 State St": null,
+    "2510 COMMERCIAL STREET": "SkylineFord",
+    "3555 RIVER ROAD": "SkylineFord",
+    "2571 PRINGLE RD": "IndustrialSource",
+    "3080 22ND ST": "Johnstone Supply"
+  },
+  "vendorInvoicePatterns": {
+    "AutoZone": "^[0-9]{11}$",
+    "NAPA": "^[0-9]{5,7}$",
+    "OReilly": "^[0-9]{4}-[0-9]{5,7}$",
+    "FMI": "^[0-9A-Za-z]{6,12}$",
+    "FMP": "^[0-9A-Za-z]{6,12}$",
+    "FleetPride": "^[0-9]{8,12}$",
+    "TEC": "^[0-9A-Za-z]{5,12}$",
+    "SkylineFord": "^[0-9]{4,7}$",
+    "CapitolSubaru": "^[0-9]{5,9}$",
+    "CDKSimplePay": "^[0-9A-Za-z]+_[0-9]+$",
+    "IMC": "^[0-9]{3}-[0-9]{6}$",
+    "JohnstoneSupply": "^[0-9]{4,8}$"
+  }
+}
