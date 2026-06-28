@@ -158,7 +158,34 @@ for desktop in "$REPO_DIR/config/autostart/"*.desktop; do
   link "$desktop" "$HOME/.config/autostart/$(basename "$desktop")"
 done
 
-# ── Step 6: Neovim ───────────────────────────────────────────
+# ── Step 6: OneDrive ────────────────────────────────────────
+
+header "Setting Up OneDrive"
+
+if ! command -v onedriver &>/dev/null; then
+  info "Installing onedriver (AUR)..."
+  if command -v yay &>/dev/null; then
+    yay -S --noconfirm onedriver 2>/dev/null || warn "onedriver install failed — install manually with: yay -S onedriver"
+  else
+    warn "yay not found — install onedriver manually: yay -S onedriver"
+  fi
+else
+  info "onedriver already installed — skipping"
+fi
+
+# Create OneDrive mount point
+mkdir -p "$HOME/OneDrive"
+
+# Add onedriver to i3 autostart if not already present
+if [[ -f "$HOME/.config/i3/config" ]] && ! grep -q "onedriver" "$HOME/.config/i3/config"; then
+  echo "exec --no-startup-id onedriver ~/OneDrive" >> "$HOME/.config/i3/config"
+  success "Added onedriver to i3 autostart"
+fi
+
+info "OneDrive: After login, run: onedriver ~/OneDrive"
+info "Then sign in with your Microsoft account in the browser prompt."
+
+# ── Step 7: Neovim ───────────────────────────────────────────
 
 header "Setting Up Neovim"
 

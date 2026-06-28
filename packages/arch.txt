@@ -83,6 +83,17 @@ openssh
 wget
 curl
 
+# ── Document Scanning ───────────────────────────────────────
+sane
+sane-airscan
+ocrmypdf
+gs (ghostscript)
+poppler (pdftotext)
+jq
+
+# ── OneDrive ────────────────────────────────────────────────
+# onedriver is AUR — installed separately by install.sh
+
 # ── Media & Misc ─────────────────────────────────────────────
 mpv
 imagemagick

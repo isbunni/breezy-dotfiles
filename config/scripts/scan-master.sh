@@ -14,7 +14,7 @@
 set -uo pipefail
 
 # ── Config ───────────────────────────────────────────────────
-SAVE_DIR="/home/brendenb/OneDrive/Desktop/SCANS 2026"
+SAVE_DIR="$HOME/OneDrive/Desktop/SCANS 2026"
 DEVICE="brother4:net1;dev0"
 RESOLUTION=300
 VENDOR_DB="$HOME/.config/scripts/scan-vendors.json"
