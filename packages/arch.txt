@@ -87,9 +87,13 @@ curl
 sane
 sane-airscan
 ocrmypdf
-gs (ghostscript)
-poppler (pdftotext)
+ghostscript
+poppler
 jq
+
+# ── OpenClaw (AI Assistant) ────────────────────────────────
+# Installed via npm — see install.sh
+# After install: openclaw setup
 
 # ── OneDrive ────────────────────────────────────────────────
 # onedriver is AUR — installed separately by install.sh

@@ -254,7 +254,7 @@ exec_always --no-startup-id picom
 exec_always ~/.config/polybar/launch.sh &
 
 # Wallpaper Launch Using FEH
-exec_always feh --bg-fill /home/Bunni/Pictures/wallpapers/redgalaxy.jpg /home/Bunni/Pictures/wallpapers/redgalaxy.jpg /home/Bunni/Pictures/wallpapers/redgalaxyrotated.jpg
+exec_always feh --bg-fill ~/Pictures/wallpapers/redgalaxy.jpg ~/Pictures/wallpapers/redgalaxy.jpg ~/Pictures/wallpapers/redgalaxyrotated.jpg
 
 exec --no-startup-id pulseaudio --start
 
@@ -297,17 +297,17 @@ exec --no-startup-id i3-msg "workspace 2; exec thunderbird"
 
 # Workspace 3 — LibreOffice Calc with shop spreadsheets
 # Files live in OneDrive root, not Desktop
-exec --no-startup-id bash -c 'FILES=(); [ -f "/home/brendenb/OneDrive/Vendor List.xlsx" ] && FILES+=("/home/brendenb/OneDrive/Vendor List.xlsx"); [ -f "/home/brendenb/OneDrive/Master_ERT LLV.FFV.xlsx" ] && FILES+=("/home/brendenb/OneDrive/Master_ERT LLV.FFV.xlsx"); i3-msg "workspace 3; exec libreoffice --calc ${FILES[@]}"'
+exec --no-startup-id bash -c 'FILES=(); [ -f "$HOME/OneDrive/Vendor List.xlsx" ] && FILES+=("$HOME/OneDrive/Vendor List.xlsx"); [ -f "$HOME/OneDrive/Master_ERT LLV.FFV.xlsx" ] && FILES+=("$HOME/OneDrive/Master_ERT LLV.FFV.xlsx"); i3-msg "workspace 3; exec libreoffice --calc ${FILES[@]}"'
 
 # Workspace 4 — Thunar (SCANS folder) + Calculator
-exec --no-startup-id i3-msg "workspace 4; exec thunar /home/brendenb/OneDrive/Desktop/SCANS\ 2026/"
+exec --no-startup-id i3-msg "workspace 4; exec thunar $HOME/OneDrive/Desktop/SCANS\ 2026/"
 exec --no-startup-id i3-msg "workspace 4; exec gnome-calculator"
 
 # Workspace 5 — Telegram Desktop
 exec --no-startup-id i3-msg "workspace 5; exec Telegram"
 
 # Workspace 10 — Sophie startup terminal (stays open, shows live log)
-exec --no-startup-id i3-msg "workspace 10; exec kitty --title 'Sophie — Startup Brief' -e /home/brendenb/.openclaw/workspace/scripts/startup-brief.sh"
+exec --no-startup-id i3-msg "workspace 10; exec kitty --title 'Sophie — Startup Brief' -e $HOME/.openclaw/workspace/scripts/startup-brief.sh"
 
 # Keybinding: Mod+; → Telegram on workspace 5
 bindsym $mod+semicolon workspace number $ws5; exec Telegram

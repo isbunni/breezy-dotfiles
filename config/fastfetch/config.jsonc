@@ -7,9 +7,9 @@
 
   
 {
-    "$schema": "/home/Bunni/Pictures/icon/objection.png",
+    "$schema": "~/Pictures/icon/objection.png",
     "logo": {
-    	"source": "/home/Bunni/Pictures/icon/zer-twoborder-gruv-flipped.png",
+    	"source": "~/Pictures/icon/zer-twoborder-gruv-flipped.png",
     	"type": "kitty",
       	"height": 15,
       	"padding": {

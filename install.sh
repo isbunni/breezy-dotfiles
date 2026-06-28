@@ -185,7 +185,25 @@ fi
 info "OneDrive: After login, run: onedriver ~/OneDrive"
 info "Then sign in with your Microsoft account in the browser prompt."
 
-# ── Step 7: Neovim ───────────────────────────────────────────
+# ── Step 7: OpenClaw ────────────────────────────────────────
+
+header "Setting Up OpenClaw"
+
+if ! command -v openclaw &>/dev/null; then
+  info "Installing OpenClaw via npm..."
+  npm install -g openclaw 2>/dev/null || warn "OpenClaw install failed — install manually with: npm install -g openclaw"
+  success "OpenClaw installed"
+else
+  info "OpenClaw already installed — skipping"
+fi
+
+if [[ -f "$HOME/.openclaw/completions/openclaw.zsh" ]]; then
+  info "OpenClaw zsh completions available"
+fi
+
+info "OpenClaw: Run 'openclaw setup' to configure your instance"
+
+# ── Step 8: Neovim ───────────────────────────────────────────
 
 header "Setting Up Neovim"
 

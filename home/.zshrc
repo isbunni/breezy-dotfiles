@@ -113,7 +113,7 @@ source $ZSH/oh-my-zsh.sh
 # ruby gem install path
 #export GEM_HOME="$(gem env user_gemhome)"
 #export PATH="$PATH:$GEM_HOME/bin"
-export PATH="/home/Bunni/.npm-global/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
 
 # Custom function to clear screen and run neofetch
 function clear_and_fastfetch() {
@@ -135,7 +135,7 @@ fastfetch
 export PATH=~/.npm-global/bin:$PATH
 
 # OpenClaw Completion
-[ -f "/home/brendenb/.openclaw/completions/openclaw.zsh" ] && source "/home/brendenb/.openclaw/completions/openclaw.zsh"
+[ -f "$HOME/.openclaw/completions/openclaw.zsh" ] && source "$HOME/.openclaw/completions/openclaw.zsh"
 
 # Theme switcher (nvim + kitty + starship)
 theme() {
