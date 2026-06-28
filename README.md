@@ -97,18 +97,69 @@ breezy-dotfiles/
 
 ## Keybindings (i3)
 
+> `Mod` = `Alt` (Mod1). `Mod4` = Super/Windows key.
+
+### Essentials
 | Keys | Action |
 |---|---|
 | `Mod+Enter` | Open terminal (kitty) |
-| `Mod+d` | Open app launcher (rofi) |
-| `Mod+Shift+e` | Exit i3 |
-| `Mod+Shift+r` | Restart i3 |
-| `Mod+1-0` | Switch workspace |
-| `Mod+Shift+1-0` | Move window to workspace |
-| `Mod+h/j/k/l` | Focus left/down/up/right |
-| `Mod+Shift+h/j/k/l` | Move window |
+| `Mod+Space` | Open app launcher (rofi drun) |
+| `Mod+d` | Open dmenu launcher |
+| `Mod+q` | Kill focused window |
+| `Mod+Shift+e` | Exit i3 (with confirmation) |
+| `Mod+Shift+r` | Restart i3 (preserves layout) |
+| `Mod+Shift+c` | Reload i3 config |
+
+### Navigation
+| Keys | Action |
+|---|---|
+| `Mod+h/j/k/l` | Focus left / down / up / right |
+| `Mod+Shift+h/j/k/l` | Move window left / down / up / right |
+| `Mod+1`–`Mod+0` | Switch to workspace 1–10 |
+| `Mod+Shift+1`–`Mod+0` | Move window to workspace 1–10 |
+| `Mod+a` | Focus parent container |
+| `Mod+Shift+f` | Focus mode toggle (tiling/floating) |
+
+### Layout
+| Keys | Action |
+|---|---|
 | `Mod+f` | Fullscreen toggle |
-| `Mod+Shift+q` | Kill window |
+| `Mod+s` | Stacking layout |
+| `Mod+w` | Tabbed layout |
+| `Mod+e` | Toggle split layout |
+| `Mod+v` | Split vertical |
+| `Mod+Shift+b` | Split horizontal |
+| `Mod+Shift+Space` | Toggle floating |
+| `Mod+r` | Resize mode (h/j/k/l or arrows, Enter/Esc to exit) |
+
+### Media & Hardware
+| Keys | Action |
+|---|---|
+| `XF86AudioRaiseVolume` | Volume up (+10%) |
+| `XF86AudioLowerVolume` | Volume down (-10%) |
+| `XF86AudioMute` | Mute toggle |
+| `XF86AudioMicMute` | Mic mute toggle |
+| `XF86MonBrightnessUp` | Brightness up (+10%) |
+| `XF86MonBrightnessDown` | Brightness down (-10%) |
+| `Mod4+v` | Toggle clipboard manager (copyq) |
+
+### McFarlands Shop
+| Keys | Action |
+|---|---|
+| `Mod+;` | Open Telegram on workspace 5 |
+| `Mod+Space` | Quick-launch any app via rofi |
+
+### Startup Applications
+| Workspace | Application |
+|---|---|
+| 1 | Firefox |
+| 2 | Thunderbird |
+| 3 | LibreOffice Calc (shop spreadsheets) |
+| 4 | Thunar (SCANS folder) + Calculator |
+| 5 | Telegram Desktop |
+| 10 | Sophie startup brief (kitty) |
+
+**Always running:** Polybar, Picom, CopyQ, OneDrive (onedriver), PulseAudio
 
 ## Keybindings (Neovim)
 
