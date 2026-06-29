@@ -146,29 +146,38 @@ done
 
 header "Building Scan Master C++"
 
-SCAN_CPP_DIR="$REPO_DIR/config/scripts/scan-master-cpp"
+SCAN_REPO="https://github.com/isbunni/scan-master-cpp.git"
+SCAN_SRC_DIR="$HOME/breezy-dotfiles/scan-master-cpp"
 SCAN_INSTALL_DIR="$HOME/.config/scripts/scan-master-cpp"
 
-if [[ -d "$SCAN_CPP_DIR" ]]; then
+# Clone or update the standalone repo
+if [[ -d "$SCAN_SRC_DIR/.git" ]]; then
+  info "Updating scan-master-cpp..."
+  cd "$SCAN_SRC_DIR" && git pull && cd "$REPO_DIR"
+else
+  info "Cloning scan-master-cpp..."
+  git clone "$SCAN_REPO" "$SCAN_SRC_DIR" 2>/dev/null || {
+    warn "Could not clone scan-master-cpp — check your internet connection"
+    warn "  git clone $SCAN_REPO $SCAN_SRC_DIR"
+  }
+fi
+
+if [[ -d "$SCAN_SRC_DIR" ]]; then
   info "Building scan-master-cpp..."
-  mkdir -p "$SCAN_CPP_DIR/build"
-  cd "$SCAN_CPP_DIR/build"
+  mkdir -p "$SCAN_SRC_DIR/build"
+  cd "$SCAN_SRC_DIR/build"
   cmake .. -DCMAKE_BUILD_TYPE=Release 2>/dev/null
   make -j$(nproc) 2>/dev/null
   if [[ $? -eq 0 ]]; then
-    # Install binaries and vendor files
     mkdir -p "$SCAN_INSTALL_DIR"
     cp -f scan-master scan-invoice scan-learn "$SCAN_INSTALL_DIR/"
-    cp -rf "$SCAN_CPP_DIR/vendors" "$SCAN_INSTALL_DIR/"
+    cp -rf "$SCAN_SRC_DIR/vendors" "$SCAN_INSTALL_DIR/"
     chmod +x "$SCAN_INSTALL_DIR"/scan-master "$SCAN_INSTALL_DIR"/scan-invoice "$SCAN_INSTALL_DIR"/scan-learn
     success "Scan Master C++ installed to $SCAN_INSTALL_DIR"
   else
-    warn "Scan Master C++ build failed — you may need to install dependencies"
-    warn "  sudo pacman -S base-devel cmake nlohmann-json"
+    warn "Scan Master C++ build failed — check dependencies"
   fi
   cd "$REPO_DIR"
-else
-  info "scan-master-cpp not found in repo, skipping"
 fi
 
 # Make sure ~/.local/bin is in PATH

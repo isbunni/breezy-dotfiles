@@ -1,9 +1,0 @@
-# Build artifacts
-build/
-*.o
-*.a
-
-# Editor
-.vscode/
-.idea/
-*.swp
