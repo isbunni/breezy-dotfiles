@@ -158,6 +158,21 @@ for desktop in "$REPO_DIR/config/autostart/"*.desktop; do
   link "$desktop" "$HOME/.config/autostart/$(basename "$desktop")"
 done
 
+# ── Step 5b: Firefox ───────────────────────────────────────
+
+header "Setting Up Firefox"
+
+# Find the default-release profile (skip the lock profile)
+for profile_dir in "$HOME"/.config/mozilla/firefox/*/; do
+  case "$(basename "$profile_dir")" in
+    *.default-release)
+      mkdir -p "$profile_dir"
+      backup "$profile_dir/user.js"
+      link "$REPO_DIR/config/firefox/user.js" "$profile_dir/user.js"
+      ;;
+  esac
+done
+
 # ── Step 6: OneDrive ────────────────────────────────────────
 
 header "Setting Up OneDrive"
