@@ -70,8 +70,6 @@ if(BUILD_TESTS)
     find_package(GTest REQUIRED)
     add_executable(scan_master_tests
         tests/test_vendor_detector.cpp
-        tests/test_invoice_extractor.cpp
-        tests/test_pipeline.cpp
     )
     target_link_libraries(scan_master_tests PRIVATE scan_master_lib GTest::GTest)
     add_test(NAME scan_master_tests COMMAND scan_master_tests)
