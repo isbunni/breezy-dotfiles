@@ -142,6 +142,35 @@ for script in "$REPO_DIR/config/scripts/"*; do
   link "$script" "$HOME/.local/bin/$(basename "$script")"
 done
 
+# ── Step 4b: Scan Master C++ ────────────────────────────────
+
+header "Building Scan Master C++"
+
+SCAN_CPP_DIR="$REPO_DIR/config/scripts/scan-master-cpp"
+SCAN_INSTALL_DIR="$HOME/.config/scripts/scan-master-cpp"
+
+if [[ -d "$SCAN_CPP_DIR" ]]; then
+  info "Building scan-master-cpp..."
+  mkdir -p "$SCAN_CPP_DIR/build"
+  cd "$SCAN_CPP_DIR/build"
+  cmake .. -DCMAKE_BUILD_TYPE=Release 2>/dev/null
+  make -j$(nproc) 2>/dev/null
+  if [[ $? -eq 0 ]]; then
+    # Install binaries and vendor files
+    mkdir -p "$SCAN_INSTALL_DIR"
+    cp -f scan-master scan-invoice scan-learn "$SCAN_INSTALL_DIR/"
+    cp -rf "$SCAN_CPP_DIR/vendors" "$SCAN_INSTALL_DIR/"
+    chmod +x "$SCAN_INSTALL_DIR"/scan-master "$SCAN_INSTALL_DIR"/scan-invoice "$SCAN_INSTALL_DIR"/scan-learn
+    success "Scan Master C++ installed to $SCAN_INSTALL_DIR"
+  else
+    warn "Scan Master C++ build failed — you may need to install dependencies"
+    warn "  sudo pacman -S base-devel cmake nlohmann-json"
+  fi
+  cd "$REPO_DIR"
+else
+  info "scan-master-cpp not found in repo, skipping"
+fi
+
 # Make sure ~/.local/bin is in PATH
 if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
   export PATH="$HOME/.local/bin:$PATH"

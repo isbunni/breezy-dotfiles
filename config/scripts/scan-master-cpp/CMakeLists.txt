@@ -63,6 +63,17 @@ target_link_libraries(scan-invoice PRIVATE scan_master_lib)
 add_executable(scan-learn src/main_learn.cpp)
 target_link_libraries(scan-learn PRIVATE scan_master_lib)
 
+# ── Install targets ───────────────────────────────────────
+# Install binaries and vendor JSON files to ~/.config/scan-master-cpp/
+# so they're available at the path polybar expects.
+install(TARGETS scan-master scan-invoice scan-learn
+    RUNTIME DESTINATION bin
+)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/vendors
+    DESTINATION share/scan-master-cpp
+    FILES_MATCHING PATTERN "*.json"
+)
+
 # ── Tests ──────────────────────────────────────────────────
 option(BUILD_TESTS "Build unit tests" OFF)
 if(BUILD_TESTS)

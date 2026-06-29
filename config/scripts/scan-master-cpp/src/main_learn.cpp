@@ -27,9 +27,11 @@ using namespace scan_master;
 namespace fs = std::filesystem;
 
 static const fs::path VENDOR_DIR = [] {
+    auto install_dir = fs::path(std::getenv("HOME")) / ".config" / "scripts" / "scan-master-cpp" / "vendors";
+    if (fs::exists(install_dir)) return install_dir;
     auto source_dir = fs::path(std::getenv("HOME")) / "breezy-dotfiles" / "config" / "scripts" / "scan-master-cpp" / "vendors";
     if (fs::exists(source_dir)) return source_dir;
-    return fs::path(std::getenv("HOME")) / ".config" / "scan-master" / "vendors";
+    return install_dir;
 }();
 
 static const fs::path SCANS_DIR = [] {

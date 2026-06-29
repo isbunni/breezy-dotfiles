@@ -43,11 +43,14 @@ static const fs::path SAVE_DIR = [] {
 }();
 
 static const fs::path VENDOR_DIR = [] {
-    // Look for vendor files in the source tree first,
-    // then fall back to user config dir
+    // Runtime path: where the installer puts vendor JSON files.
+    // Falls back to source tree for development builds.
+    auto install_dir = fs::path(std::getenv("HOME")) / ".config" / "scripts" / "scan-master-cpp" / "vendors";
+    if (fs::exists(install_dir)) return install_dir;
+    // Development fallback
     auto source_dir = fs::path(std::getenv("HOME")) / "breezy-dotfiles" / "config" / "scripts" / "scan-master-cpp" / "vendors";
     if (fs::exists(source_dir)) return source_dir;
-    return fs::path(std::getenv("HOME")) / ".config" / "scan-master" / "vendors";
+    return install_dir;  // Return install dir even if missing (error msg later)
 }();
 
 static const PipelineConfig PIPELINE_CONFIG;
