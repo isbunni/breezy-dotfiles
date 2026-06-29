@@ -1,0 +1,29 @@
+{
+  "name": "FMI",
+  "keywords": [
+    { "pattern": "fmitrucks", "weight": 3, "is_regex": false },
+    { "pattern": "fmi truck", "weight": 3, "is_regex": false },
+    { "pattern": "factory motor parts", "weight": 3, "is_regex": false },
+    { "pattern": "FMI", "weight": 2, "is_regex": false }
+  ],
+  "context": {
+    "phones": {
+      "503-286-2800": "FMI"
+    },
+    "domains": {
+      "fmitrucks.com": "FMI"
+    }
+  },
+  "invoice_extraction": {
+    "patterns": [
+      "Invoice:\\s*([\\w-]+)",
+      "Invoice\\s*([\\w.-]+)"
+    ],
+    "validation_regex": "^[0-9A-Za-z]{6,12}$"
+  },
+  "file_naming": {
+    "normal_template": "{vendor}_{invoice}.pdf",
+    "unknown_template": "{vendor}_UNKNOWN_{date}_{time}.pdf"
+  },
+  "default_subtype": "Invoice"
+}

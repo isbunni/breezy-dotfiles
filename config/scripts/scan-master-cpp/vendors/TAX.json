@@ -1,0 +1,17 @@
+{
+  "name": "TAX",
+  "keywords": [
+    { "pattern": "w-9|w9", "weight": 3, "is_regex": false },
+    { "pattern": "tax.*return|1099", "weight": 2, "is_regex": true },
+    { "pattern": "irs|internal revenue", "weight": 2, "is_regex": false }
+  ],
+  "invoice_extraction": {
+    "patterns": [],
+    "validation_regex": ""
+  },
+  "file_naming": {
+    "normal_template": "TAX_{date}_{time}.pdf",
+    "unknown_template": "TAX_{date}_{time}.pdf"
+  },
+  "default_subtype": "TaxDocument"
+}

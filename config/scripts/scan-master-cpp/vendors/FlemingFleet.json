@@ -1,0 +1,18 @@
+{
+  "name": "FlemingFleet",
+  "keywords": [
+    { "pattern": "fleming fleet", "weight": 3, "is_regex": false },
+    { "pattern": "fleming", "weight": 1, "is_regex": false }
+  ],
+  "invoice_extraction": {
+    "patterns": [
+      "Invoice\\s+(?:Number|#|No)\\s*:?\\s*([\\w-]+)"
+    ],
+    "validation_regex": "^[\\w-]+$"
+  },
+  "file_naming": {
+    "normal_template": "{vendor}_{invoice}.pdf",
+    "unknown_template": "{vendor}_UNKNOWN_{date}_{time}.pdf"
+  },
+  "default_subtype": "Invoice"
+}

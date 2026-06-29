@@ -1,0 +1,20 @@
+{
+  "name": "AMZ",
+  "keywords": [
+    { "pattern": "amazon.com", "weight": 3, "is_regex": false },
+    { "pattern": "amazon.ca", "weight": 3, "is_regex": false },
+    { "pattern": "AMAZON", "weight": 2, "is_regex": false },
+    { "pattern": "\\b\\d{3}-\\d{7}-\\d{7}\\b", "weight": 2, "is_regex": true }
+  ],
+  "invoice_extraction": {
+    "patterns": [
+      "(\\d{3}-\\d{7}-\\d{7})"
+    ],
+    "validation_regex": "^\\d{3}-\\d{7}-\\d{7}$"
+  },
+  "file_naming": {
+    "normal_template": "{vendor}_{invoice}.pdf",
+    "unknown_template": "{vendor}_UNKNOWN_{date}_{time}.pdf"
+  },
+  "default_subtype": "Invoice"
+}

@@ -1,0 +1,35 @@
+{
+  "name": "IndustrialSource",
+  "keywords": [
+    { "pattern": "industrial source", "weight": 4, "is_regex": false },
+    { "pattern": "industrialsource", "weight": 4, "is_regex": false },
+    { "pattern": "industrial sourge", "weight": 3, "is_regex": false },
+    { "pattern": "503-763-1440", "weight": 3, "is_regex": false },
+    { "pattern": "LPM SYSTEMS", "weight": 2, "is_regex": false },
+    { "pattern": "Picking Ticket", "weight": 1, "is_regex": false }
+  ],
+  "context": {
+    "phones": {
+      "503-763-1440": "IndustrialSource"
+    },
+    "domains": {
+      "industrialsource.com": "IndustrialSource",
+      "www.industrialsource.com": "IndustrialSource"
+    },
+    "addresses": {
+      "2571 PRINGLE RD": "IndustrialSource"
+    }
+  },
+  "invoice_extraction": {
+    "patterns": [
+      "Order[^0-9]*(\\d{5,10}-\\d{2})",
+      "(\\d{9}-\\d{2})"
+    ],
+    "validation_regex": "^\\d{5,10}-\\d{2}$"
+  },
+  "file_naming": {
+    "normal_template": "{vendor}_{invoice}.pdf",
+    "unknown_template": "{vendor}_UNKNOWN_{date}_{time}.pdf"
+  },
+  "default_subtype": "Invoice"
+}

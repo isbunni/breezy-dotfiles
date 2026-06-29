@@ -1,0 +1,20 @@
+{
+  "name": "1800Radiator",
+  "keywords": [
+    { "pattern": "1-800-radiator", "weight": 3, "is_regex": false },
+    { "pattern": "800.*radiator", "weight": 2, "is_regex": true },
+    { "pattern": "radiator.*supply", "weight": 2, "is_regex": true }
+  ],
+  "invoice_extraction": {
+    "patterns": [
+      "Order\\s+(?:Number|#|No)\\s*:?\\s*(\\d+)",
+      "Invoice\\s+(?:Number|#|No)\\s*:?\\s*(\\d+)"
+    ],
+    "validation_regex": "^[0-9]+$"
+  },
+  "file_naming": {
+    "normal_template": "{vendor}_{invoice}.pdf",
+    "unknown_template": "{vendor}_UNKNOWN_{date}_{time}.pdf"
+  },
+  "default_subtype": "Invoice"
+}

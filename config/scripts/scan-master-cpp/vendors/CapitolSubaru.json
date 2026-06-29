@@ -1,0 +1,26 @@
+{
+  "name": "CapitolSubaru",
+  "keywords": [
+    { "pattern": "capitol.*subaru", "weight": 3, "is_regex": true },
+    { "pattern": "capitolsubaru.com", "weight": 3, "is_regex": false },
+    { "pattern": "capitol subaru", "weight": 3, "is_regex": false }
+  ],
+  "context": {
+    "domains": {
+      "capitolsubaru.com": "CapitolSubaru"
+    }
+  },
+  "invoice_extraction": {
+    "patterns": [
+      "Invoice Number\\s*(\\d+)",
+      "\\b(\\d{6,8})\\b",
+      "Invoice\\s+(?:Number|#|No)\\s*:?\\s*([\\w-]+)"
+    ],
+    "validation_regex": "^[0-9]{5,9}$"
+  },
+  "file_naming": {
+    "normal_template": "{vendor}_{invoice}.pdf",
+    "unknown_template": "{vendor}_UNKNOWN_{date}_{time}.pdf"
+  },
+  "default_subtype": "Invoice"
+}

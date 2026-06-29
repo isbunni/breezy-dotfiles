@@ -1,0 +1,26 @@
+{
+  "name": "IMC",
+  "keywords": [
+    { "pattern": "imcparts", "weight": 3, "is_regex": false },
+    { "pattern": "imc.*parts authority", "weight": 3, "is_regex": true },
+    { "pattern": "parts authority", "weight": 2, "is_regex": false },
+    { "pattern": "IMC", "weight": 1, "is_regex": false }
+  ],
+  "context": {
+    "domains": {
+      "imcparts.com": "IMC"
+    }
+  },
+  "invoice_extraction": {
+    "patterns": [
+      "INV\\. NO\\.\\s*([\\d-]+)",
+      "(\\d{3}-\\d{6})"
+    ],
+    "validation_regex": "^[0-9]{3}-[0-9]{6}$"
+  },
+  "file_naming": {
+    "normal_template": "{vendor}_{invoice}.pdf",
+    "unknown_template": "{vendor}_UNKNOWN_{date}_{time}.pdf"
+  },
+  "default_subtype": "Invoice"
+}

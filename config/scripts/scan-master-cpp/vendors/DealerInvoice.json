@@ -1,0 +1,20 @@
+{
+  "name": "DealerInvoice",
+  "keywords": [
+    { "pattern": "Parts Invoice", "weight": 2, "is_regex": false },
+    { "pattern": "CDK Global", "weight": 1, "is_regex": false },
+    { "pattern": "Copyright.*ADP", "weight": 1, "is_regex": true }
+  ],
+  "invoice_extraction": {
+    "patterns": [
+      "INVOICE\\s+NUMBER\\s+([0-9]{4,7})",
+      "NUMBER\\s+([0-9A-Za-z]{5,12})"
+    ],
+    "validation_regex": "^[0-9A-Za-z]{4,12}$"
+  },
+  "file_naming": {
+    "normal_template": "Dealer_{invoice}.pdf",
+    "unknown_template": "Dealer_UNKNOWN_{date}_{time}.pdf"
+  },
+  "default_subtype": "PartsInvoice"
+}

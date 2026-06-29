@@ -1,0 +1,38 @@
+{
+  "name": "TEC",
+  "keywords": [
+    { "pattern": "tec equipment", "weight": 4, "is_regex": false },
+    { "pattern": "TEC.*Equipment", "weight": 4, "is_regex": true },
+    { "pattern": "wabas", "weight": 3, "is_regex": false },
+    { "pattern": "WABAS", "weight": 3, "is_regex": false },
+    { "pattern": "wilsonville.*or.*97070", "weight": 3, "is_regex": true },
+    { "pattern": "7950 SW Burns Way", "weight": 3, "is_regex": false },
+    { "pattern": "503-682-1777", "weight": 3, "is_regex": false },
+    { "pattern": "503.682.1777", "weight": 3, "is_regex": false }
+  ],
+  "context": {
+    "phones": {
+      "503-682-1777": "TEC"
+    },
+    "cities": {
+      "wilsonville|97070": "TEC",
+      "newberg|97132": "TEC"
+    },
+    "addresses": {
+      "7950 SW Burns Way": "TEC"
+    }
+  },
+  "invoice_extraction": {
+    "patterns": [
+      "NUMBER\\s+([0-9A-Za-z]{5,12})",
+      "Invoice\\s+Number\\s*[: ]+([0-9A-Za-z]{5,12})",
+      "\\b([0-9]{7,10}[A-Z])\\b"
+    ],
+    "validation_regex": "^[0-9A-Za-z]{5,12}$"
+  },
+  "file_naming": {
+    "normal_template": "{vendor}_{invoice}.pdf",
+    "unknown_template": "{vendor}_UNKNOWN_{date}_{time}.pdf"
+  },
+  "default_subtype": "Invoice"
+}

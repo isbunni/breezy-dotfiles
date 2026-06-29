@@ -1,0 +1,35 @@
+{
+  "name": "NAPA",
+  "keywords": [
+    { "pattern": "napa", "weight": 3, "is_regex": false },
+    { "pattern": "lawrence.*auto parts", "weight": 3, "is_regex": true },
+    { "pattern": "Lawrence's Auto Parts", "weight": 3, "is_regex": false },
+    { "pattern": "Minneapolis.*MN.*55480", "weight": 3, "is_regex": true },
+    { "pattern": "\\bPL\\d{4}\\b", "weight": 2, "is_regex": true },
+    { "pattern": "503-256-0025", "weight": 2, "is_regex": false },
+    { "pattern": "503.256.0025", "weight": 2, "is_regex": false }
+  ],
+  "context": {
+    "phones": {
+      "503-256-0025": "NAPA",
+      "503-581-6655": "NAPA"
+    },
+    "cities": {
+      "minneapolis|55480": "NAPA"
+    }
+  },
+  "invoice_extraction": {
+    "patterns": [
+      "Invoice\\s+Number\\s*[: ]*\\K[0-9]+",
+      "Invoice\\s*Number\\s*[: ]*\\K[0-9]+",
+      "\\b17[0-9]{3}-[0-9]{2}\\b",
+      "\\b[0-9]{5,7}\\b"
+    ],
+    "validation_regex": "^[0-9]{5,7}$"
+  },
+  "file_naming": {
+    "normal_template": "{vendor}_{invoice}.pdf",
+    "unknown_template": "{vendor}_UNKNOWN_{date}_{time}.pdf"
+  },
+  "default_subtype": "Invoice"
+}

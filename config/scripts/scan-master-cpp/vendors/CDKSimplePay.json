@@ -1,0 +1,25 @@
+{
+  "name": "CDKSimplePay",
+  "keywords": [
+    { "pattern": "CDK SimplePay", "weight": 5, "is_regex": false },
+    { "pattern": "simplepay.cdk.com", "weight": 5, "is_regex": false },
+    { "pattern": "SimplePay", "weight": 3, "is_regex": false }
+  ],
+  "context": {
+    "domains": {
+      "simplepay.cdk.com": "CDKSimplePay"
+    }
+  },
+  "invoice_extraction": {
+    "patterns": [
+      "Auth Code\\s+([0-9A-Za-z]+)",
+      "Transaction Id\\s+([0-9a-f]+)"
+    ],
+    "validation_regex": "^[0-9A-Za-z]+$"
+  },
+  "file_naming": {
+    "normal_template": "{vendor}_{invoice}.pdf",
+    "unknown_template": "{vendor}_UNKNOWN_{date}_{time}.pdf"
+  },
+  "default_subtype": "Invoice"
+}

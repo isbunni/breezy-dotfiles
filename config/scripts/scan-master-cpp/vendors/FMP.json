@@ -1,0 +1,19 @@
+{
+  "name": "FMP",
+  "keywords": [
+    { "pattern": "factory motor parts", "weight": 3, "is_regex": false },
+    { "pattern": "FMP[-\\s]", "weight": 2, "is_regex": true }
+  ],
+  "invoice_extraction": {
+    "patterns": [
+      "INVOICE NO\\.\\s*([\\d-]+)",
+      "Invoice\\s+(?:No|Number|#)\\.?\\s*([\\d-]+)"
+    ],
+    "validation_regex": "^[0-9A-Za-z]{6,12}$"
+  },
+  "file_naming": {
+    "normal_template": "{vendor}_{invoice}.pdf",
+    "unknown_template": "{vendor}_UNKNOWN_{date}_{time}.pdf"
+  },
+  "default_subtype": "Invoice"
+}
