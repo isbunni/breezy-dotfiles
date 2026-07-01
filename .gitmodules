@@ -1,6 +1,6 @@
 [submodule "config/nvim"]
 	path = config/nvim
-	url = https://github.com/isbunni/neovim-config.git
+	url = https://github.com/isbunni/breezy-neovim.git
 [submodule "config/kitty"]
 	path = config/kitty
 	url = https://github.com/isbunni/breezy-kitty.git
