@@ -5,7 +5,7 @@
 # ══════════════════════════════════════════════════════════════
 #
 #  Usage:
-#    git clone https://github.com/isbunni/breezy-dotfiles.git ~/breezy-dotfiles
+#    git clone --recurse-submodules https://github.com/isbunni/breezy-dotfiles.git ~/breezy-dotfiles
 #    cd ~/breezy-dotfiles
 #    ./install.sh
 #
@@ -121,8 +121,8 @@ link "$REPO_DIR/config/gtk/gtkrc-2.0"      "$HOME/.gtkrc-2.0"
 # ~/.config/ entries
 for dir in "$REPO_DIR/config"/*/; do
   name="$(basename "$dir")"
-  # Skip nvim — handled separately below
-  [[ "$name" == "nvim" || "$name" == "scripts" || "$name" == "autostart" ]] && continue
+  # Skip submodules — handled separately below
+  [[ "$name" == "nvim" || "$name" == "kitty" || "$name" == "scripts" || "$name" == "autostart" ]] && continue
   mkdir -p "$HOME/.config/$name"
   # Link individual files/folders inside, not the parent dir
   for item in "$dir"/*; do
@@ -218,14 +218,19 @@ fi
 
 info "OpenClaw: Run 'openclaw setup' to configure your instance"
 
-# ── Step 8: Neovim ───────────────────────────────────────────
+# ── Step 8: Neovim & Kitty Submodules ────────────────────────
 
-header "Setting Up Neovim"
+header "Setting Up Neovim & Kitty"
 
 # Link the nvim config directory
 backup "$HOME/.config/nvim"
 rm -rf "$HOME/.config/nvim"
 link "$REPO_DIR/config/nvim/nvim" "$HOME/.config/nvim"
+
+# Link the kitty config
+backup "$HOME/.config/kitty"
+rm -rf "$HOME/.config/kitty"
+link "$REPO_DIR/config/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
 
 # Bootstrap lazy.nvim plugins on first launch
 info "Installing nvim plugins (this may take a moment)..."
